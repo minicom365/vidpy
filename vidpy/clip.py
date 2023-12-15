@@ -494,15 +494,15 @@ class Clip(object):
         '''
 
         if w is None:
-            w = self.width
+            w = self.width + x
 
         if h is None:
-            h = self.height
+            h = self.height + y
 
         self.fx('affine', {
             'transition.rect': '{}/{}:{}x{}'.format(x, y, w, h),
-            'transition.valign': 'middle',
-            'transition.halign': 'center',
+            'transition.valign': 'left',
+            'transition.halign': 'top',
             'transition.fill': 0,
             'transition.distort': 1 if distort else 0,
             'transition.fill': 1 if distort else 0
