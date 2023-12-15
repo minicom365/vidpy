@@ -4,6 +4,7 @@ Utility functions for vidpy
 
 from __future__ import print_function
 import os
+import errno
 import sys
 from subprocess import call, Popen, check_output
 from xml.etree.ElementTree import fromstring
@@ -87,7 +88,7 @@ def check_melt():
         devnull = open(os.devnull)
         Popen([config.MELT_BINARY], stdout=devnull, stderr=devnull).communicate()
     except OSError as e:
-        if e.errno == os.errno.ENOENT:
+        if e.errno == errno.ENOENT:
             print('Error: Could not find melt. See https://antiboredom.github.com/vidpy for installation instructions.')
             sys.exit()
 
